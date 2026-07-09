@@ -1,5 +1,7 @@
 # 🚚 Real-Time Shipment Tracking Portal & Logistics Marketplace
 
+Last updated: 2026-07-09
+
 A full-stack logistics platform that enables shippers to post freight loads, carriers to bid on shipments, and customers to track deliveries in real time.
 
 This project is being developed as a **4-week engineering project** following an incremental development approach with clear Git commits after every milestone.
