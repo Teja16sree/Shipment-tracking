@@ -293,3 +293,4 @@ mv -- "$TMP_DOWNLOAD_DIR/$actualDistributionDir" "$MAVEN_HOME" || [ -d "$MAVEN_H
 
 clean || :
 exec_maven "$@"
+# Maven Wrapper script that automatically downloads and runs the required Maven version for consistent project builds across different environments.
