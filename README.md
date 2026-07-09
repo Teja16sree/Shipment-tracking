@@ -228,5 +228,6 @@ This project is developed for educational purposes as part of a software enginee
 ## 👩‍💻 Author
 
 **Sinduluri Tejasree**
+**Tarini Krishna**
 
 Java | Spring Boot | MySQL | React | Full Stack Development
