@@ -1,2 +1,5 @@
+
+# Ensure correct line endings for Maven Wrapper scripts across different operating systems.
+
 /mvnw text eol=lf
 *.cmd text eol=crlf
