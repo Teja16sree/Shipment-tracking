@@ -439,3 +439,5 @@ All core authentication and security components have been implemented with:
 - Production-ready configuration
 
 The application is ready for testing and deployment with proper security measures in place.
+
+// Handles JWT token generation, validation, and claim extraction for secure authentication.
