@@ -1,3 +1,6 @@
+/**
+ * Starts the Shipment Tracking Spring Boot application.
+ */
 package com.stp.shipmenttracking;
 
 import org.springframework.boot.SpringApplication;
