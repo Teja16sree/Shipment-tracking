@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+# Ignore generated files, build artifacts, IDE settings, and other environment-specific files.
