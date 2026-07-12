@@ -1,235 +1,94 @@
-# 🚚 Real-Time Shipment Tracking Portal & Logistics Marketplace
+# 🚚 Shipment Tracking API
 
-Last updated: 2026-07-09
+This repository contains a Spring Boot backend for a shipment tracking application. The current implementation includes user authentication, JWT-based security, and shipment management APIs.
 
-A full-stack logistics platform that enables shippers to post freight loads, carriers to bid on shipments, and customers to track deliveries in real time.
+## ✅ Current Status
 
-This project is being developed as a **4-week engineering project** following an incremental development approach with clear Git commits after every milestone.
+The project is currently buildable and runnable. The latest verification included:
 
----
+- Maven test run: passed
+- Spring Boot application startup: successful on port 8080
 
-## 📌 Project Overview
+## 🛠️ Tech Stack
 
-The logistics industry often faces challenges such as:
-
-- Manual freight booking
-- Lack of transparency between shippers and carriers
-- No real-time shipment visibility for customers
-
-This application aims to solve these problems by providing:
-
-- 🔐 Secure user authentication
-- 📦 Shipment marketplace
-- 💰 Carrier bidding system
-- 📍 Real-time shipment tracking using WebSockets
-- 🗺️ Live map visualization
-- 👥 Role-based dashboards
-
----
-
-# 🛠️ Technology Stack
-
-### Backend
-
-- Java 21
-- Spring Boot
+- Java 17
+- Spring Boot 3.5.15
 - Spring Security
 - Spring Data JPA
 - JWT Authentication
+- MySQL
 - Maven
 
-### Database
+## ✨ Implemented Features
 
-- MySQL
+- User registration and login
+- Password hashing with BCrypt
+- JWT token generation and validation
+- Protected API endpoints with role-based access support
+- Shipment CRUD endpoints
 
-### Frontend (Upcoming)
+## 📁 Project Structure
 
-- React
-- Tailwind CSS
-- Axios
-- Leaflet Maps
-
-### Real-Time Communication (Upcoming)
-
-- Spring WebSocket
-- STOMP
-
----
-
-# 📁 Project Structure
-
-```
-shipmenttracking/
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/tejasree/shipmenttracking/
-│   │   │       ├── config/
-│   │   │       ├── controller/
-│   │   │       ├── dto/
-│   │   │       ├── entity/
-│   │   │       ├── enums/
-│   │   │       ├── exception/
-│   │   │       ├── repository/
-│   │   │       ├── security/
-│   │   │       └── service/
-│   │   │
-│   │   └── resources/
-│   │       └── application.properties
-│   │
-│   └── test/
-│
-├── pom.xml
-└── README.md
+```text
+src/
+  main/
+    java/
+      com/stp/shipmenttracking/
+        config/
+        controller/
+        dto/
+        entity/
+        enums/
+        mapper/
+        repository/
+        security/
+        service/
+    resources/
+      application.properties
 ```
 
----
+## ⚙️ Setup Instructions
 
-# 👥 User Roles
-
-### 🚛 Shipper
-
-- Register/Login
-- Create shipment
-- View carrier bids
-- Award shipment
-- Track shipment
-
-### 🚚 Carrier
-
-- Register/Login
-- Browse available shipments
-- Place bids
-- Update shipment location
-
-### 📦 Customer
-
-- Track shipment using Tracking ID
-- View live shipment location
-
----
-
-# 🗓️ Development Roadmap
-
-## ✅ Week 1 – Authentication & Project Setup
-
-- [x] Spring Boot project initialization
-- [x] MySQL database configuration
-- [ ] User Entity
-- [ ] Role Management
-- [ ] Registration API
-- [ ] JWT Authentication
-- [ ] Role-Based Authorization
-
----
-
-## ⏳ Week 2 – Logistics Marketplace
-
-- Shipment CRUD
-- Carrier Bidding
-- Award Shipment Logic
-- Shipment Status Management
-
----
-
-## ⏳ Week 3 – Real-Time Tracking
-
-- WebSocket Configuration
-- GPS Location Updates
-- STOMP Messaging
-- Live Shipment Tracking
-
----
-
-## ⏳ Week 4 – Frontend Dashboard
-
-- React Dashboard
-- Interactive Maps
-- WebSocket Integration
-- Deployment
-- Documentation
-
----
-
-# 🚀 Current Progress
-
-### Completed
-
-- Spring Boot project created
-- Maven configured
-- MySQL database connected
-- Project folder structure created
-
-### In Progress
-
-- User Authentication Module
-
----
-
-# ⚙️ Getting Started
-
-## Clone the Repository
+1. Make sure Java 17 and Maven are installed.
+2. Create a MySQL database named `shipment_tracking`.
+3. Update your database credentials in `src/main/resources/application.properties` if needed.
+4. Run the application:
 
 ```bash
-git clone <your-repository-url>
+./mvnw spring-boot:run
 ```
 
-## Navigate to the Project
+The API will be available at:
 
-```bash
-cd shipmenttracking
-```
-
-## Configure Database
-
-Create a MySQL database named:
-
-```sql
-CREATE DATABASE shipment_tracking;
-```
-
-Update `application.properties` with your MySQL credentials.
-
-## Run the Application
-
-```bash
-mvn spring-boot:run
-```
-
-The application will start on:
-
-```
+```text
 http://localhost:8080
 ```
 
----
+## 🔐 API Endpoints
 
-# 📌 Git Commit Progress
+### Authentication
 
-| Commit | Description                                          | Status |
-| ------ | ---------------------------------------------------- | ------ |
-| 1      | Initialize Spring Boot logistics marketplace project | ✅     |
-| 2      | Configure MySQL datasource and JPA                   | ✅     |
-| 3      | Create user entity and role definitions              | ⏳     |
-| 4      | Add repository layer                                 | ⏳     |
-| 5      | Implement registration workflow                      | ⏳     |
-| 6      | Implement JWT authentication                         | ⏳     |
-| 7      | Enable role-based authorization                      | ⏳     |
+- `POST /api/auth/register`
+- `POST /api/auth/login`
 
----
+### Shipments
 
-# 📄 License
+- `GET /api/shipments`
+- `POST /api/shipments`
+- `GET /api/shipments/{id}`
+- `PUT /api/shipments/{id}`
+- `DELETE /api/shipments/{id}`
 
-This project is developed for educational purposes as part of a software engineering internship and learning initiative.
+## 🧪 Verification
 
----
+Run the following command to verify the project:
+
+```bash
+./mvnw test
+```
 
 ## 👩‍💻 Author
 
-**Sinduluri Tejasree**
-
-
-**Tarini Krishna**
+Sinduluri Tejasree
 
 Java | Spring Boot | MySQL | React | Full Stack Development
