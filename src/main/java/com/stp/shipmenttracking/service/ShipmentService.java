@@ -13,4 +13,6 @@ public interface ShipmentService {
 
     ShipmentResponse getShipmentById(Long id);
 
+    List<ShipmentResponse> getOpenShipments();
+
 }

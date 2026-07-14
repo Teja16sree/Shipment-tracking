@@ -61,4 +61,13 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .build();
     }
 
+    @Override
+    public List<ShipmentResponse> getOpenShipments() {
+
+        return shipmentRepository.findByStatus(ShipmentStatus.OPEN)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
 }
