@@ -39,7 +39,10 @@ public class SecurityConfiguration {
                                                                 "/api/shipments/**",
                                                                 "/h2-console/**",
                                                                 "/api/tracking/**",
-                                                                "/tracking")
+                                                                "/tracking",
+                                                                "/v3/api-docs/**",
+                                                                "/swagger-ui/**",
+                                                                "/swagger-ui.html")
                                                 .permitAll()
                                                 .anyRequest().authenticated())
                                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))

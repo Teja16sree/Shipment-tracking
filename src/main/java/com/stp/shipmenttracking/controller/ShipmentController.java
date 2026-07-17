@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import com.stp.shipmenttracking.dto.DashboardResponse;
+import io.swagger.v3.oas.annotations.Operation;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class ShipmentController {
     /**
      * Create a new shipment
      */
+    @Operation(summary = "Create a new shipment")
     @PostMapping
     public ResponseEntity<ShipmentResponse> createShipment(
             @Valid @RequestBody ShipmentRequest request) {
@@ -36,6 +38,7 @@ public class ShipmentController {
     /**
      * Get all shipments
      */
+    @Operation(summary = "Get all shipments")
     @GetMapping
     public ResponseEntity<List<ShipmentResponse>> getAllShipments() {
 
@@ -46,6 +49,7 @@ public class ShipmentController {
     /**
      * Get shipment by ID
      */
+    @Operation(summary = "Get shipment by ID")
     @GetMapping("/{id}")
     public ResponseEntity<ShipmentResponse> getShipmentById(
             @PathVariable Long id) {
@@ -64,6 +68,7 @@ public class ShipmentController {
                 shipmentService.getOpenShipments());
     }
 
+    @Operation(summary = "Update shipment status")
     @PutMapping("/{id}/status")
     public ResponseEntity<ShipmentResponse> updateShipmentStatus(
             @PathVariable Long id,
@@ -113,6 +118,7 @@ public class ShipmentController {
 
     }
 
+    @Operation(summary = "Get dashboard statistics")
     @GetMapping("/dashboard")
     public ResponseEntity<DashboardResponse> getDashboardStatistics() {
 
