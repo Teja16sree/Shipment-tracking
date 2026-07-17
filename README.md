@@ -27,6 +27,16 @@ The project is currently buildable and runnable. The latest verification include
 - Protected API endpoints with role-based access support
 - Shipment CRUD endpoints
 
+## Week 2 Features
+
+- Shipment CRUD APIs
+- Carrier Load Board
+- Shipment Status Management
+- DTO Validation
+- Global Exception Handling
+- MySQL Persistence
+- REST API Testing using Postman
+
 ## 📁 Project Structure
 
 controller
