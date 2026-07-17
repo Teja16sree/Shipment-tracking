@@ -38,7 +38,7 @@ public class SecurityConfiguration {
                                                                 "/api/test/**",
                                                                 "/api/shipments/**",
                                                                 "/h2-console/**",
-                                                                "/tracking/**",
+                                                                "/api/tracking/**",
                                                                 "/tracking")
                                                 .permitAll()
                                                 .anyRequest().authenticated())
