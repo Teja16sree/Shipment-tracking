@@ -50,6 +50,19 @@ public class ShipmentServiceImpl implements ShipmentService {
         return mapToResponse(shipment);
     }
 
+    @Override
+    public ShipmentResponse updateShipmentStatus(Long id, ShipmentStatus status) {
+
+        Shipment shipment = shipmentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Shipment not found"));
+
+        shipment.setStatus(status);
+
+        Shipment updatedShipment = shipmentRepository.save(shipment);
+
+        return mapToResponse(updatedShipment);
+    }
+
     private ShipmentResponse mapToResponse(Shipment shipment) {
 
         return ShipmentResponse.builder()

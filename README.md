@@ -29,23 +29,45 @@ The project is currently buildable and runnable. The latest verification include
 
 ## 📁 Project Structure
 
-```text
-src/
-  main/
-    java/
-      com/stp/shipmenttracking/
-        config/
-        controller/
-        dto/
-        entity/
-        enums/
-        mapper/
-        repository/
-        security/
-        service/
-    resources/
-      application.properties
-```
+controller
+AuthController.java
+ShipmentController.java
+
+service
+AuthService.java
+AuthServiceImpl.java
+ShipmentService.java
+ShipmentServiceImpl.java
+
+repository
+ShipmentRepository.java
+UserRepository.java
+
+entity
+Shipment.java
+User.java
+
+security
+JwtAuthenticationFilter.java
+JwtService.java
+CustomUserDetailsService.java
+
+config
+PasswordConfig.java
+SecurityConfiguration.java
+
+dto
+LoginRequest.java
+RegisterRequest.java
+ShipmentRequest.java
+ShipmentResponse.java
+AuthResponse.java
+
+exception
+GlobalExceptionHandler.java
+
+resources
+application.properties
 
 ## ⚙️ Setup Instructions
 

@@ -2,6 +2,7 @@ package com.stp.shipmenttracking.controller;
 
 import com.stp.shipmenttracking.dto.ShipmentRequest;
 import com.stp.shipmenttracking.dto.ShipmentResponse;
+import com.stp.shipmenttracking.enums.ShipmentStatus;
 import com.stp.shipmenttracking.service.ShipmentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +60,15 @@ public class ShipmentController {
 
         return ResponseEntity.ok(
                 shipmentService.getOpenShipments());
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<ShipmentResponse> updateShipmentStatus(
+            @PathVariable Long id,
+            @RequestParam ShipmentStatus status) {
+
+        return ResponseEntity.ok(
+                shipmentService.updateShipmentStatus(id, status));
     }
 
 }
