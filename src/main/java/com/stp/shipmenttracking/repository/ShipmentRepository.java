@@ -10,4 +10,6 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
 
     List<Shipment> findByStatus(ShipmentStatus status);
 
+    List<Shipment> findByOriginContainingIgnoreCase(String origin);
+
 }

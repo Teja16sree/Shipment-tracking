@@ -8,6 +8,10 @@ import com.stp.shipmenttracking.exception.ResourceNotFoundException;
 import com.stp.shipmenttracking.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -87,5 +91,36 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .weight(shipment.getWeight())
                 .status(shipment.getStatus())
                 .build();
+    }
+
+    @Override
+    public Page<ShipmentResponse> getShipments(
+            int page,
+            int size,
+            String sortBy) {
+
+        Pageable pageable = PageRequest.of(
+                page,
+                size,
+                Sort.by(sortBy).ascending());
+
+        return shipmentRepository
+                .findAll(pageable)
+                .map(this::mapToResponse);
+    }
+
+    @Override
+    public List<ShipmentResponse> searchByOrigin(String origin) {
+
+        return shipmentRepository
+
+                .findByOriginContainingIgnoreCase(origin)
+
+                .stream()
+
+                .map(this::mapToResponse)
+
+                .toList();
+
     }
 }

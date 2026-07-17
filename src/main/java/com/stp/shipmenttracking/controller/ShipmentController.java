@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -69,6 +70,46 @@ public class ShipmentController {
 
         return ResponseEntity.ok(
                 shipmentService.updateShipmentStatus(id, status));
+    }
+
+    @GetMapping("/paged")
+    public ResponseEntity<Page<ShipmentResponse>> getShipments(
+
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(defaultValue = "5") int size,
+
+            @RequestParam(defaultValue = "id") String sortBy) {
+
+        return ResponseEntity.ok(
+
+                shipmentService.getShipments(
+
+                        page,
+
+                        size,
+
+                        sortBy
+
+                )
+
+        );
+
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ShipmentResponse>>
+
+            searchByOrigin(
+
+                    @RequestParam String origin) {
+
+        return ResponseEntity.ok(
+
+                shipmentService.searchByOrigin(origin)
+
+        );
+
     }
 
 }
