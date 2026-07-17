@@ -4,6 +4,7 @@ import com.stp.shipmenttracking.dto.ShipmentRequest;
 import com.stp.shipmenttracking.dto.ShipmentResponse;
 import com.stp.shipmenttracking.entity.Shipment;
 import com.stp.shipmenttracking.enums.ShipmentStatus;
+import com.stp.shipmenttracking.exception.ResourceNotFoundException;
 import com.stp.shipmenttracking.repository.ShipmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -45,16 +46,27 @@ public class ShipmentServiceImpl implements ShipmentService {
     public ShipmentResponse getShipmentById(Long id) {
 
         Shipment shipment = shipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Shipment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Shipment not found with ID: " + id));
 
         return mapToResponse(shipment);
+    }
+
+    @Override
+    public List<ShipmentResponse> getOpenShipments() {
+
+        return shipmentRepository.findByStatus(ShipmentStatus.OPEN)
+                .stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
     public ShipmentResponse updateShipmentStatus(Long id, ShipmentStatus status) {
 
         Shipment shipment = shipmentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Shipment not found"));
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Shipment not found with ID: " + id));
 
         shipment.setStatus(status);
 
@@ -63,6 +75,9 @@ public class ShipmentServiceImpl implements ShipmentService {
         return mapToResponse(updatedShipment);
     }
 
+    /**
+     * Convert Entity to Response DTO
+     */
     private ShipmentResponse mapToResponse(Shipment shipment) {
 
         return ShipmentResponse.builder()
@@ -73,14 +88,4 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .status(shipment.getStatus())
                 .build();
     }
-
-    @Override
-    public List<ShipmentResponse> getOpenShipments() {
-
-        return shipmentRepository.findByStatus(ShipmentStatus.OPEN)
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
-
 }
