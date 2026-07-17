@@ -37,6 +37,32 @@ The project is currently buildable and runnable. The latest verification include
 - MySQL Persistence
 - REST API Testing using Postman
 
+## week 3 and 4 Features
+
+- Shipment Management
+- REST APIs
+- JWT Security
+- Real-Time WebSocket Tracking
+- Dashboard Statistics
+- Pagination & Search
+- Swagger API Documentation
+
+## Technologies
+
+- Java 21
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- MySQL
+- WebSocket
+- Maven
+- Lombok
+
+## API Documentation
+
+Swagger UI:
+http://localhost:8080/swagger-ui/index.html
+
 ## 📁 Project Structure
 
 controller
