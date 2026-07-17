@@ -37,7 +37,9 @@ public class SecurityConfiguration {
                                                                 "/api/auth/**",
                                                                 "/api/test/**",
                                                                 "/api/shipments/**",
-                                                                "/h2-console/**")
+                                                                "/h2-console/**",
+                                                                "/tracking/**",
+                                                                "/tracking")
                                                 .permitAll()
                                                 .anyRequest().authenticated())
                                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
