@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import com.stp.shipmenttracking.dto.DashboardResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -121,6 +122,31 @@ public class ShipmentServiceImpl implements ShipmentService {
                 .map(this::mapToResponse)
 
                 .toList();
+
+    }
+
+    @Override
+    public DashboardResponse getDashboardStatistics() {
+
+        long total = shipmentRepository.count();
+
+        long open = shipmentRepository.countByStatus(ShipmentStatus.OPEN);
+
+        long inTransit = shipmentRepository.countByStatus(ShipmentStatus.IN_TRANSIT);
+
+        long delivered = shipmentRepository.countByStatus(ShipmentStatus.DELIVERED);
+
+        return new DashboardResponse(
+
+                total,
+
+                open,
+
+                inTransit,
+
+                delivered
+
+        );
 
     }
 }

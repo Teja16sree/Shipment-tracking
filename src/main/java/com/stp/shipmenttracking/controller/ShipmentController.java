@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
+import com.stp.shipmenttracking.dto.DashboardResponse;
 
 import java.util.List;
 
@@ -107,6 +108,17 @@ public class ShipmentController {
         return ResponseEntity.ok(
 
                 shipmentService.searchByOrigin(origin)
+
+        );
+
+    }
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<DashboardResponse> getDashboardStatistics() {
+
+        return ResponseEntity.ok(
+
+                shipmentService.getDashboardStatistics()
 
         );
 

@@ -4,6 +4,7 @@ import com.stp.shipmenttracking.dto.ShipmentRequest;
 import com.stp.shipmenttracking.dto.ShipmentResponse;
 import com.stp.shipmenttracking.enums.ShipmentStatus;
 import org.springframework.data.domain.Page;
+import com.stp.shipmenttracking.dto.DashboardResponse;
 
 import java.util.List;
 
@@ -22,5 +23,7 @@ public interface ShipmentService {
     Page<ShipmentResponse> getShipments(int page, int size, String sortBy);
 
     List<ShipmentResponse> searchByOrigin(String origin);
+
+    DashboardResponse getDashboardStatistics();
 
 }
